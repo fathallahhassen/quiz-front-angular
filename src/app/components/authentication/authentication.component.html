@@ -1,0 +1,63 @@
+<div class="auth mx-auto my-5">
+  <div class="auth__form" *ngIf="!alreadyMember">
+    <h3 class="text-center text-black-50"> Create your account</h3>
+    <form action="#" (ngSubmit)="onSubmitRegistrationForm()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" formControlName="username" type="text" name="username" id="username" placeholder="james.bond" required/>
+      </div>
+      <div class="form-group">
+        <label for="email-signup">Email</label>
+        <input class="form-control" formControlName="email" type="text" name="email" id="email-signup" placeholder="james.bond@spectre.com"
+               required/>
+      </div>
+      <div class="form-group">
+        <label for="password-signup">Password</label>
+        <input class="form-control"  formControlName="password" type="password" name="password" id="password-signup" placeholder="********"
+               required/>
+      </div>
+      <div class="form-group">
+        <label for="passwordConfirmation">Repeat Password</label>
+        <input class="form-control"  formControlName="passwordConfirmation" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="********"
+               required/>
+      </div>
+      <div class="text-center">
+        <ul class="list-inline">
+          <li>
+            <input class="btn btn--form" type="submit" value="Register"/>
+          </li>
+          <li>
+            <a class="auth__link" (click)="switchForm(true)">I am already a member</a>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <div class="auth__form" *ngIf="alreadyMember">
+    <h3 class="text-center text-black-50"> Login to your account</h3>
+    <form action="#"  [formGroup]="loginForm" (ngSubmit)="onSubmitLoginForm()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" formControlName="email" name="email" id="email" placeholder="email" required/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" formControlName="password" name="password" id="password" placeholder="********" required/>
+      </div>
+      <div class="text-center">
+        <ul class="list-inline">
+          <li>
+            <button [disabled]="loading" type="submit" class="btn btn--form">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Login
+            </button>
+          </li>
+          <li>
+            <a class="auth__link" (click)="switchForm(false)">Don't have an account, sign up</a>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>
+

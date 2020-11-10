@@ -1,4 +1,4 @@
 export const environment = {
-  BASE_API: 'http://localhost:3000/questions',
+  BASE_API: 'https://quiz-backend-nodejs.herokuapp.com',
   production: true
 };

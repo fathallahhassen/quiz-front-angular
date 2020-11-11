@@ -1,0 +1,30 @@
+<div class="header">
+  <nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color border-light">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/quiz">Quiz</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons" *ngIf="currentUser && currentUser.email">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default p-4 text-center"
+               aria-labelledby="navbarDropdownMenuLink">
+            <p> {{currentUser.email}}</p>
+            <a class="dropdown-item bg-danger text-white" (click)="logout()" href="#">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+

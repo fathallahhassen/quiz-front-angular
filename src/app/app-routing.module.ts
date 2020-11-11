@@ -2,12 +2,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {QuizComponent} from './components/quiz/quiz.component';
-import {AuthenticationComponent} from './components/authentication/authentication.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegistrationComponent} from './components/registration/registration.component';
 
 const routing: Routes = [
   {path: '', component: HomeComponent},
   {path: 'quiz', component: QuizComponent},
-  {path: 'auth', component: AuthenticationComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegistrationComponent},
   {path: '**', redirectTo: ''}
 ];
 

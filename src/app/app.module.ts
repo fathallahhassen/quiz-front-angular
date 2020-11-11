@@ -5,23 +5,25 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeComponent} from './components/home/home.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthenticationComponent} from './components/authentication/authentication.component';
-import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import {ErrorInterceptor} from './_helpers/error.interceptor';
+import {BasicAuthInterceptor} from './shared/helpers/basic-auth.interceptor';
+import {ErrorInterceptor} from './shared/helpers/error.interceptor';
 import {CommonModule} from '@angular/common';
-import {LoginTestComponent} from './components/home/login-test/login-test.component';
 import {QuizComponent} from './components/quiz/quiz.component';
 import {QuestionComponent} from './components/question/question.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegistrationComponent} from './components/registration/registration.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AuthenticationComponent,
-    LoginTestComponent,
     QuizComponent,
-    QuestionComponent
+    QuestionComponent,
+    LoginComponent,
+    RegistrationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

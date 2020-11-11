@@ -1,0 +1,63 @@
+<div class="auth mx-auto my-5">
+  <div class="auth__form">
+    <h3 class="text-center text-black-50"> Create your account</h3>
+    <form (ngSubmit)="onSubmitForm()" [formGroup]="registrationForm" action="#">
+      <div class="form-group">
+        <label for="user-name">Username</label>
+        <input [ngClass]="{ 'is-invalid': submitted && rF.userName.errors }" class="form-control"
+               formControlName="userName" id="user-name" name="user-name"
+               placeholder="james.bond" required
+               type="text"/>
+        <div *ngIf="submitted && rF.userName.errors" class="invalid-feedback">
+          <div *ngIf="rF.userName.errors.required">First Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email-signup">Email</label>
+        <input [ngClass]="{ 'is-invalid': submitted && rF.email.errors }" class="form-control" formControlName="email"
+               id="email-signup" name="email"
+               placeholder="james.bond@spectre.com" required
+               type="text"/>
+        <div *ngIf="submitted && rF.email.errors" class="invalid-feedback">
+          <div *ngIf="rF.email.errors.required">Email is required</div>
+          <div *ngIf="rF.email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password-signup">Password</label>
+        <input [ngClass]="{ 'is-invalid': submitted && rF.password.errors }" class="form-control"
+               formControlName="password" id="password-signup" name="password"
+               placeholder="********" required
+               type="password"/>
+        <div *ngIf="submitted && rF.password.errors" class="invalid-feedback">
+          <div *ngIf="rF.password.errors.required">Password is required</div>
+          <div *ngIf="rF.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password-confirmation">Repeat Password</label>
+        <input [ngClass]="{ 'is-invalid': submitted && rF.passwordConfirmation.errors }" class="form-control"
+               formControlName="passwordConfirmation" id="password-confirmation"
+               name="password-confirmation" placeholder="********" required
+               type="password"/>
+        <div *ngIf="submitted && rF.passwordConfirmation.errors" class="invalid-feedback">
+          <div *ngIf="rF.passwordConfirmation.errors.required">Confirm Password is required</div>
+          <div *ngIf="rF.passwordConfirmation.errors.mustMatch">Passwords must match</div>
+        </div>
+      </div>
+      <div class="text-center">
+        <ul class="list-inline">
+          <li>
+            <button [disabled]="loading" class="btn btn--form" type="submit">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1 loader"></span>
+              Register
+            </button>
+          </li>
+          <li>
+            <a (click)="switchToLoginPage()" class="auth__link">I am already a member</a>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>

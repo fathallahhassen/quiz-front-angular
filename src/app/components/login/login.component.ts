@@ -1,21 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
+import {first} from 'rxjs/operators';
 
 @Component({
-  selector: 'app-authentication',
-  templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class AuthenticationComponent implements OnInit {
+export class LoginComponent implements OnInit {
+
   loginForm: FormGroup;
 
-  alreadyMember = true;
   loading = false;
-  returnUrl: string;
+  submitted = false;
 
+  returnUrl: string;
+  loginUrl = '/register';
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -25,6 +27,11 @@ export class AuthenticationComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  // getter for easy access to login form fields
+  get lF() {
+    return this.loginForm.controls;
+  }
+
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -32,18 +39,25 @@ export class AuthenticationComponent implements OnInit {
     });
   }
 
-  switchForm(alreadyMember: boolean): void {
-    this.alreadyMember = alreadyMember;
+  switchToLoginPage(): void {
+    this.router.navigate([this.loginUrl]);
   }
 
-  onSubmitLoginForm(): void {
+  onSubmitForm(): void {
+    this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }
-    const f = this.loginForm.controls;
     this.loading = true;
-    this.authenticationService.login(f.email.value, f.password.value)
+    const userInformation = {};
+
+    for (const [key, value] of Object.entries(this.loginForm.controls)) {
+      // @ts-ignore
+      userInformation[key] = value.value;
+
+    }
+    this.authenticationService.callAuthApi(userInformation, 'login', true)
       .pipe(first())
       .subscribe(
         data => {
@@ -53,9 +67,5 @@ export class AuthenticationComponent implements OnInit {
         error => {
           this.loading = false;
         });
-  }
-
-  onSubmitRegistrationForm(): void {
-
   }
 }

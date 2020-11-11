@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   public startQuiz(): void {
-    this.router.navigate(['quiz']);
+    this.router.navigate(['/quiz']);
   }
 
 }

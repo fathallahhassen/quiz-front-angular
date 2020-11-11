@@ -1,0 +1,30 @@
+<div class="auth mx-auto my-5">
+  <div class="auth__form">
+    <h3 class="text-center text-black-50"> Login to your account</h3>
+    <form (ngSubmit)="onSubmitForm()" [formGroup]="loginForm" action="#">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" formControlName="email" id="email" name="email" placeholder="email" required
+               type="text"/>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" formControlName="password" id="password" name="password" placeholder="********"
+               required type="password"/>
+      </div>
+      <div class="text-center">
+        <ul class="list-inline">
+          <li>
+            <button [disabled]="loading" class="btn btn--form" type="submit">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1 loader"></span>
+              Login
+            </button>
+          </li>
+          <li>
+            <a (click)="switchToLoginPage()" class="auth__link">Don't have an account, sign up</a>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>

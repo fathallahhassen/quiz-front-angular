@@ -34,8 +34,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
       userName: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(8)],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       passwordConfirmation: ['', Validators.required]
     }, {
       validator: MustMatch('password', 'passwordConfirmation')
@@ -60,7 +60,7 @@ export class RegistrationComponent implements OnInit {
       userInformation[key] = value.value;
 
     }
-    this.authenticationService.callAuthApi(userInformation, 'register', false)
+    this.authenticationService.callAuthApi(userInformation, 'register')
       .pipe(first())
       .subscribe(
         data => {

@@ -19,16 +19,15 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  callAuthApi(userLoginInformation, apiPath, saveUser) {
+  callAuthApi(userLoginInformation, apiPath) {
     return this.http.post<any>(`${environment.BASE_API}/auth/${apiPath}`, userLoginInformation)
-      .pipe(map(user => {
-        // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-        console.log('currentUser', JSON.stringify(user));
-        if (saveUser) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
+      .pipe(map(response => {
+        // store user details and basic auth credentials in local storage to keep response logged in between page refreshes
+        if (response.user) {
+          localStorage.setItem('currentUser', JSON.stringify(response));
+          this.currentUserSubject.next(response);
         }
-        return user;
+        return response;
       }));
   }
 

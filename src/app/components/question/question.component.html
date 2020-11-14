@@ -4,8 +4,8 @@
   </p>
   <div class="d-flex flex-column text-left ml-5">
     <div *ngFor="let choice of question.options; let i = index">
-      <input #checkboxes type="checkbox" id="choice{{i}}" (change)="answerChanged($event.target.checked ? choice : null)" [disabled]="questionHasAnswer">
-      <label for="choice{{i}}" class="ml-3">{{choice}}</label>
+      <input class="cursor-pointer" #checkboxes type="checkbox" id="choice{{i}}" (change)="answerChanged($event.target.checked ? choice : null)" [disabled]="questionHasAnswer">
+      <label class="cursor-pointer ml-3" for="choice{{i}}">{{choice}}</label>
     </div>
   </div>
 </div>

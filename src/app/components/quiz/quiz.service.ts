@@ -10,6 +10,7 @@ export class QuizService {
   quizUrl = environment.BASE_API + '/questions';
 
   answers = [];
+  correctAnswers = 0;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -20,6 +21,9 @@ export class QuizService {
 
 
   recordAnswers($event: any, currentQuestion: any) {
-    this.answers.push({question : currentQuestion, answer: $event});
+    if (currentQuestion.answer === $event) {
+      this.correctAnswers++;
+    }
+    this.answers.push({question: currentQuestion, answer: $event});
   }
 }

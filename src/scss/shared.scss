@@ -21,7 +21,7 @@
   }
 
   &__link {
-    font-size: .8px;
+    font-size: 10px;
     font-weight: 600;
     text-decoration: underline;
     color: #999;
@@ -70,19 +70,18 @@
 
 
 .loader {
-  left: 50%;
-  top: 50%;
-  margin-top: -100px; // put further to top than center
-  margin-left: -30px;
+  height: 20px;
+  width: 20px;
   position: absolute;
-  border: 3px solid #fff;
-  border-radius: 60px;
-  animation-fill-mode: both;
-  animation-name: ldboxrotate;
-  animation-timing-function: linear;
-  animation-iteration-count: 1;
-  animation-play-state: paused;
-  animation-duration: 0.8s;
-  height: 60px;
-  width: 60px;
+  border: .25em solid #ffffff;
+  border-radius: 50%;
+  vertical-align: text-bottom;
+  border-right-color: transparent;
+  -webkit-animation: spinner-border .75s linear infinite;
+  animation: spinner-border .75s linear infinite;
+
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }

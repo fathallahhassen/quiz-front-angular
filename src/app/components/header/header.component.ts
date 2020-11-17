@@ -11,9 +11,8 @@ export class HeaderComponent implements OnInit {
   currentUser;
 
   constructor(private authenticationService: AuthenticationService) {
-    authenticationService.currentUserSubject.subscribe((value: any) => {
+    authenticationService.currentUserSubject.subscribe((value) => {
       if (value) {
-        console.log('Subscription got', value); // Subscription wont get
         this.currentUser = value.user;
       }
     });

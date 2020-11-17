@@ -11,7 +11,7 @@ import {
   SimpleChanges,
   ViewChildren
 } from '@angular/core';
-import {QuizQuestion} from '../../model/quizQuestion';
+import {Question} from '../../model/question';
 
 @Component({
   selector: 'app-question',
@@ -21,7 +21,7 @@ import {QuizQuestion} from '../../model/quizQuestion';
 })
 export class QuestionComponent implements OnInit, OnChanges {
   @ViewChildren('checkboxes') checkboxes: QueryList<ElementRef>;
-  @Input() question: QuizQuestion;
+  @Input() question: Question;
   @Output() onChangeQuestionChange: EventEmitter<any> = new EventEmitter();
 
   questionHasAnswer = false;

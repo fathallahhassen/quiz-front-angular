@@ -13,6 +13,8 @@ import {QuestionComponent} from './components/question/question.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegistrationComponent} from './components/registration/registration.component';
 import { HeaderComponent } from './components/header/header.component';
+import { QuizzesComponent } from './components/quizzes/quizzes.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { HeaderComponent } from './components/header/header.component';
     QuestionComponent,
     LoginComponent,
     RegistrationComponent,
-    HeaderComponent
+    HeaderComponent,
+    QuizzesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
